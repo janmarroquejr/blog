@@ -51,7 +51,7 @@
 
 .nav-link svg {
   min-width: 2rem;
-  margin: 0 1.5rem;
+  margin: 0 1rem;
 }
 
 .nav-link i {
@@ -63,19 +63,6 @@
   display: none;
   margin-left: 1rem;
 }
-
-/* .fa-primary {
-  color: blue;
-}
-
-.fa-secondary {
-  color: aqua;
-}
-
-.fa-primary,
-.fa-secondary {
-  transition: 600ms;
-} */
 
 .logo {
   font-weight: bold;
@@ -112,6 +99,11 @@
     justify-content: center;
   }
 
+  .nav-link i {
+    min-width: 1.5rem;
+    margin: 0 1.2rem;
+  }
+
   .logo {
     display: none;
   }
@@ -120,7 +112,7 @@
 @media only screen and (min-width: 600px) {
   .navbar {
     top: 0;
-    width: 5rem;
+    width: 4rem;
     height: 100vh;
   }
 
