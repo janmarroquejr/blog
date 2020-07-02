@@ -4,17 +4,23 @@ import { getPostsQuery } from "../../queries/queries";
 import { flowRight as compose } from "lodash";
 import { graphql } from "react-apollo";
 import ReactHtmlParser from "react-html-parser";
+import "./style.css";
 
 const Posts = (props) => {
-  let data = props.data;
+  var data;
+  if (props.data.getPosts === undefined) {
+    data = undefined;
+  } else {
+    data = props.data.getPosts;
+  }
 
   console.log(data);
 
   let postList;
-  if (data.getPosts === undefined) {
+  if (data === undefined) {
     postList = <h1>GETTING DATA</h1>;
   } else {
-    postList = data.getPosts.map((post) => {
+    postList = data.map((post) => {
       return (
         <div className="main-post">
           <div className="post-title">
@@ -24,9 +30,20 @@ const Posts = (props) => {
 
           <div className="post-body">
             <div className="post-links">
-              <Link></Link>
+              <Link to="#" className="links">
+                {post.createdAt.substring(0, 10)}
+              </Link>
+              <Link to="#" className="links">
+                Leave a comment
+              </Link>
+              <Link to="#" className="links">
+                Edit
+              </Link>
             </div>
             <div className="post-content">{ReactHtmlParser(post.body)}</div>
+          </div>
+          <div className="post-line">
+            <hr />
           </div>
         </div>
       );

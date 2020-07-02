@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import CKEditor from "ckeditor4-react";
 import { createPostMutation } from "../../queries/mutations";
+import { getPostsQuery } from "../../queries/queries";
 import { flowRight as compose } from "lodash";
 import { graphql } from "react-apollo";
+import "./style.css";
 
 const Write = (props) => {
   const [title, setTitle] = useState("");
@@ -29,20 +31,42 @@ const Write = (props) => {
       category: category,
       body: body,
     };
-    props.createPost({
-      variables: newPost,
-    });
+
+    if (body === "") {
+      alert("You gotta have body content, dude.");
+    } else if (title === "") {
+      alert("You gotta have a title, dude.");
+    } else {
+      props.createPost({
+        variables: newPost,
+        refetchQueries: [{ query: getPostsQuery }],
+      });
+
+      setTitle("");
+      setCategory("");
+      setBody("");
+      alert("Posted Successfully!");
+    }
   };
 
   return (
-    <div>
-      <h1>THIS IS WRITE COMPONENT</h1>
-      <form>
-        <label for="title">Title</label>
-        <input type="text" id="title" onChange={getTitleData} />
-        <label for="category">Category</label>
-        <input type="text" id="category" onChange={getCategoryData} />
-        <CKEditor id="body" onChange={getBodyData} />
+    <div class="main-write">
+      <form className="main-form">
+        <div className="title-cat">
+          <label htmlFor="title">Title:</label>
+          <input type="text" id="title" onChange={getTitleData} value={title} />
+          <label htmlFor="category">Category:</label>
+          <input
+            type="text"
+            id="category"
+            onChange={getCategoryData}
+            value={category}
+          />
+        </div>
+        <div className="body">
+          <label htmlFor="body">Content: </label>
+          <CKEditor data={body} id="body" onChange={getBodyData} />
+        </div>
         <button type="submit" onClick={submitPostHandler}>
           Submit
         </button>
@@ -51,6 +75,7 @@ const Write = (props) => {
   );
 };
 
-export default compose(graphql(createPostMutation, { name: "createPost" }))(
-  Write
-);
+export default compose(
+  graphql(createPostMutation, { name: "createPost" }),
+  graphql(getPostsQuery)
+)(Write);

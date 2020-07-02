@@ -1,18 +1,18 @@
 import React from "react";
 
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
 import Navbar from "./components/Navbar/Navbar";
-import Posts from "./components/Post/Posts";
+import Posts from "./components/Posts/Posts";
 import Write from "./components/Write/Write";
 
 import "./App.css";
 
-function App() {
+const App = () => {
   const client = new ApolloClient({
-    uri: "http://localhost:4000/blog",
+    uri: "http://localhost:4000/blog" || "http://192.168.100.45:4000/blog",
   });
   return (
     <ApolloProvider client={client}>
@@ -29,6 +29,6 @@ function App() {
       </div>
     </ApolloProvider>
   );
-}
+};
 
 export default App;

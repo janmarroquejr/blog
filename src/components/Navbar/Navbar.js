@@ -36,14 +36,14 @@ const Navbar = () => {
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="fas fa-meh icon-4x"></i>
             <span class="link-text">Who Am I?</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="far fa-file-alt"></i>
             <span class="link-text">Posts</span>
           </a>

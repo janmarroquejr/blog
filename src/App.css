@@ -31,7 +31,6 @@ body::-webkit-scrollbar-thumb {
 
 main {
   margin: auto;
-  font-family: "Roboto", sans-serif;
   padding: 1rem;
   width: 60%;
 }

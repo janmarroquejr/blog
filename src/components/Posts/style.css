@@ -1,0 +1,52 @@
+/* POSTS CSS */
+
+:root {
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #23232e;
+  --bg-secondary: #141418;
+  --transition-speed: 600ms;
+}
+
+.main-post {
+}
+
+.post-title {
+  padding: 3rem 0 3rem 0;
+}
+
+.post-title h1 {
+  font-size: 3rem;
+}
+
+.post-body {
+  display: flex;
+  padding-bottom: 5rem;
+}
+
+.post-links {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.post-links .links {
+  float: left;
+  text-decoration: none;
+  color: var(--bg-primary);
+  padding-bottom: 1rem;
+  font-size: 12px;
+  width: 30%;
+}
+
+.post-links .links:hover {
+  text-decoration: underline;
+}
+
+.post-content {
+  width: 70%;
+}
+
+hr {
+  border: 2px solid black;
+}
